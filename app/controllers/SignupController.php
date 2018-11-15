@@ -28,8 +28,13 @@ class SignupController extends \Phalcon\Mvc\Controller
         );
 
         if ($success) {
-           
-            $this->flash->success('Gracias por tu Registro');
+         
+            // Mensaje tipo flash Session 
+        $this->flashSession->success('Gracias por tu Registro!');
+
+           // Redireccion a pagina insertar usuario
+        return $this->response->redirect('signup');
+
 
         } else {
             echo "Lo Sentimos, tenemos inconvenientes: ";
