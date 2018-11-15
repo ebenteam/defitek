@@ -6,41 +6,43 @@
 
     <div class="form-group">
         <label for="nombre">Nombre</label>
-        <?php echo $this->tag->textField(["nombre","class" => "form-control","placeholder" => "Ingrese su Nombre completo"]); ?>
+        <?php echo $form->render('nombre'); ?>
+
     </div>
 
     <div class="form-group">
         <label for="identificacion">Identificación</label>
-        <?php echo $this->tag->textField(["identificacion","class" => "form-control","placeholder" => "Ingrese su Identificación"]); ?>
+        <?php echo $form->render('identificacion'); ?>
     </div>
 
     <div class="form-group">
         <label for="fecha">Fecha de Nacimiento</label>
-        <?php echo $this->tag->textField(["fecha_nacimiento","class" => "form-control","placeholder" => "Ingrese su Fecha de Nacimiento"]); ?>
+        <?php echo $form->render('fecha_nacimiento'); ?>
     </div>
 
     <div class="form-group">
         <label for="genero">Género</label>
-        <?php echo $this->tag->textField(["genero","class" => "form-control","placeholder" => "Ingrese su Género"]); ?>
+        <?php echo $form->render('genero'); ?>
     </div>
 
     <div class="form-group">
         <label for="estado">Estado Civil</label>
-        <?php echo $this->tag->textField(["estado_civil","class" => "form-control","placeholder" => "Ingrese su Estado Civil"]); ?>
+        <?php echo $form->render('estado_civil'); ?>
     </div>
 
     <div class="form-group">
         <label for="direccion">Dirección</label>
-        <?php echo $this->tag->textField(["direccion","class" => "form-control","placeholder" => "Ingrese su Dirección"]); ?>
+        <?php echo $form->render('direccion'); ?>
     </div>
 
     <div class="form-group">
         <label for="telefono">Telefono</label>
-        <?php echo $this->tag->textField(["telefono","class" => "form-control","placeholder" => "Ingrese su Telefono"]); ?>
+        <?php echo $form->render('telefono'); ?>
     </div>
 
     <div class="form-group">
-        <?php echo $this->tag->submitButton(["Registro","class" => "btn btn-primary mb-2"]); ?>
+    
+        <?php echo $form->render('submit'); ?>
 
     </div>
 
