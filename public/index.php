@@ -29,6 +29,9 @@ $di->set(
                 'success' => 'alert alert-success',
                 'notice'  => 'alert alert-info',
                 'warning' => 'alert alert-warning',
+               
+
+
             ]
         );
 

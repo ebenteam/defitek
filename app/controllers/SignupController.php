@@ -15,12 +15,37 @@ class SignupController extends \Phalcon\Mvc\Controller
     {
         $request = new Request();
         $user = new Usuario();
+        $form = new RegisterForm();
 
+
+        // comprobar request 
         if (!$this->request->isPost()) {
 
             return $this->response->redirect('signup');
 
         }
+        // comprobar validacion
+        if (!$form->isValid($_POST)) {
+         $messages = $form->getMessages();
+
+        foreach ($messages as $message) {
+        $this->flashSession->error($message);
+        //return $this->response->redirect('signup');
+        // --------------------------------
+       // El bucle de dispatcher nos permite reenviar el flujo de ejecución
+       // a otro controlador / acción. Esto es muy útil para verificar si 
+       //el usuario puede acceder a ciertas opciones, redirigir a los usuarios
+       // a otras pantallas o simplemente reutilizar el código.
+
+        $this->dispatcher->forward(
+            [
+                'controller' => $this->router->getControllerName(),
+                'action'     => 'index',
+            ]
+        );
+        return;
+        }
+}
 
         $nombre = $this->request->getPost('nombre',['trim', 'string']);
         $identificacion = $this->request->getPost('identificacion',['trim', 'string']);
@@ -68,17 +93,14 @@ class SignupController extends \Phalcon\Mvc\Controller
 
 
         } else {
-            // Mensaje tipo flash Session 
-        $this->flashSession->warning('Debes completar los campos');
+           
 
             $messages = $user->getMessages();
 
             foreach ($messages as $message) {
-                echo $message->getMessage(), "<br/>";
+             echo $message->getMessage(), "<br/>";
             }
 
-            // Redireccion a pagina insertar usuario
-        return $this->response->redirect('signup');
 
         }
 
